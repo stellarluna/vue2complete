@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VueJS – Computed Properties</title>
+    <link rel="stylesheet" href="">
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+
+      <hr>
+
+      <button v-on:click="counter++">Increase</button>
+      <button v-on:click="counter--">Decrease</button>
+      <button v-on:click="secondCounter++">Increase Second</button>
+      <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+      <p>Result: {{ result() }} | {{ output }}</p>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          title: 'Computed Properties',
+          counter: 0,
+          secondCounter: 0
+        },
+        computed: {
+          // Computed properties are cached based on their dependencies.
+          // A computed property will only reevaluate if some of its
+          // dependencies have changed. That means that a computed
+          // property will return the cached value when a rerender happens
+          // as long as the original input hasn't changed.
+          output: function() {
+            console.log('Computed');
+            return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+          }
+        },
+        watch: {
+          // Watch properties are most useful for async or expensive
+          // operations in response to data changes.
+          // Specify the property we want to watch.
+          counter: function(value) {
+            // Specify the code we want to execute when the property
+            // changes. Vue automatically passes the value of the change
+            // to the function.
+            var vm = this;
+            setTimeout(function() {
+              vm.counter = 0;
+            }, 2000);
+          }
+        },
+        methods: {
+          // A method invocation will always run the function when a
+          // rerender happens.
+          result: function() {
+            console.log('Method');
+            return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
