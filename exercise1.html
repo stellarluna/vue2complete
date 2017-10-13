@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="">
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <input type="text" v-on:input="changeTitle"> -->
+      <!-- <p>{{ title }}</p> -->
+      <!-- <h1 v-once>{{ title }}</h1>
+      <p>{{ sayHello() }} – <a v-bind:href="link">Google</a></p>
+      <hr>
+      <p v-html="finishedLink"></p> -->
+
+      <p>VueJS is pretty cool – {{ name }} {{ age }}</p>
+      <p>{{ age * 3 }}</p>
+      <p>{{ generateRandNum() }}</p>
+      <img v-bind:src="gifLink"></p>
+      <input type="text" v-bind:value="name" v-on:input="changeName">
+    </div>
+    <script>
+      // vue instance:
+      new Vue({
+        el: '#app',
+        data: {
+          // title: 'Hello World!',
+          // link: 'http://google.com',
+          // finishedLink: '<a href="http://google.com">Google</a>'
+          name: 'Justine',
+          age: '24',
+          gifLink: 'https://media.giphy.com/media/aomwAUVfOlgVq/giphy.gif'
+        },
+        methods: {
+          // changeTitle: function(event) {
+          //   this.title = event.target.value;
+          // },
+          // sayHello: function() {
+          //   this.title = 'Hello!';
+          //   return this.title;
+          // }
+          changeName: function() {
+            this.name = event.target.value;
+            return this.name;
+          },
+          generateRandNum: function() {
+            return Math.random() * (99) + 1;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
