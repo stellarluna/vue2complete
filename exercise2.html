@@ -13,7 +13,17 @@
       </div>
 
       <div>
-        <input type="text" v-on:keyup.enter="storeValue">
+        <input type="text" v-on:keydown="storeValue">
+        <p>{{ value }}</p>
+      </div>
+      <!-- OR -->
+      <!-- <div>
+        <input type="text" v-on:keydown="value = $event.target.value">
+        <p>{{ value }}</p>
+      </div> -->
+
+      <div>
+        <input type="text" v-on:keydown.enter="storeValue">
         <p>{{ value }}</p>
       </div>
 
