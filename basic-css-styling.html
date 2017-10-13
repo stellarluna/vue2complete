@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Styling</title>
+    <link rel="stylesheet" href="css/basic-css-styles.css">
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h3>CSS Styling</h3>
+      <div class="demo" @click="attachRed = !attachRed" :class="{ red: attachRed }"></div>
+      <div class="demo" v-on:click="attachGreen = !attachGreen" v-bind:class="{ green: attachGreen}"></div>
+      <div class="demo"></div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          attachRed: false,
+          attachGreen: false,
+          attachBlue: false
+        }
+      });
+    </script>
+  </body>
+</html>
