@@ -8,11 +8,11 @@
   </head>
   <body>
     <div id="app">
-      <!-- <input type="text" v-on:input="changeTitle"> --> -->
-      <p>{{ title }}</p>
+      <!-- <input type="text" v-on:input="changeTitle"> -->
+      <!-- <p>{{ title }}</p> -->
       <h1 v-once>{{ title }}</h1>
       <p>{{ sayHello() }} – <a v-bind:href="link">Google</a></p>
-      <hr>
+
       <p v-html="finishedLink"></p>
 
       <p>VueJS is pretty cool – {{ name }} {{ age }}</p>
@@ -21,6 +21,10 @@
       <img v-bind:src="gifLink"></p>
       <input type="text" v-bind:value="name" v-on:input="changeName">
 
+      <br>
+
+      <input type="text" placeholder="Type a Greeting" v-model="greeting">
+      <p>{{ greeting }}</p>
       <hr>
 
       <button v-on:click="increase(2, $event)">Click Me</button>
@@ -44,7 +48,8 @@
           gifLink: 'https://media.giphy.com/media/aomwAUVfOlgVq/giphy.gif',
           counter: 0,
           x: 0,
-          y: 0
+          y: 0,
+          greeting: ''
         },
         methods: {
           changeTitle: function(event) {
