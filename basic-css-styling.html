@@ -9,9 +9,16 @@
   <body>
     <div id="app">
       <h3>CSS Styling</h3>
-      <div class="demo" @click="attachRed = !attachRed" :class="{ red: attachRed }"></div>
+      <!-- <div class="demo" @click="attachRed = !attachRed" :class="{ red: attachRed, blue: !attachRed }"></div> -->
+      <!-- Same Styling Rules, But in a Compute Property -->
+      <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
       <div class="demo" v-on:click="attachGreen = !attachGreen" v-bind:class="{ green: attachGreen}"></div>
-      <div class="demo"></div>
+      <!-- Adding multiple classes with array syntax: -->
+      <div class="demo" :class="[color, { red: attachRed }]"></div>
+
+      <hr>
+      <!-- Using v-model to assign a particular class: -->
+      <input type="text" v-model="color" name="" value="">
     </div>
 
     <script>
@@ -20,7 +27,16 @@
         data: {
           attachRed: false,
           attachGreen: false,
-          attachBlue: false
+          attachBlue: false,
+          color: 'green'
+        },
+        computed: {
+          divClasses: function() {
+            return {
+              red: this.attachRed,
+              blue: !this.attachRed
+            }
+          }
         }
       });
     </script>
